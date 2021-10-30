@@ -24,4 +24,4 @@ create table new_york.breakdowns (
 );
 
 copy new_york.breakdowns
-from '/data/bus_breakdown_and_delays.csv' delimiter ',' csv header;
+from '/data/ny_bus_breakdown/bus_breakdown_and_delays.csv' delimiter ',' csv header;
