@@ -1,0 +1,7 @@
+FROM python:3.8-slim
+
+RUN pip install --upgrade pip && pip install soda-sql-postgresql
+
+WORKDIR /dbt-runner
+
+ENTRYPOINT ["/bin/bash"]

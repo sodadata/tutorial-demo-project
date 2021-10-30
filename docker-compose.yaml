@@ -8,7 +8,21 @@ services:
       POSTGRES_DB: sodasql_tutorial
       POSTGRES_HOST_AUTH_METHOD: trust
     ports:
-      - 8000:5432
+      - 5432:5432
     volumes:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
       - ./data/:/data
+
+  soda_sql_project:
+    build:
+      context: .
+      dockerfile: ./Dockerfile_soda_sql
+    volumes:
+      - ./new_york_bus_breakdown:/new_york_bus_breakdown
+    tty: true
+    ports:
+      - 8001:5432
+    links:
+      - soda_sql_tutorial_db:soda_sql_tutorial_db
+    depends_on:
+      - soda_sql_tutorial_db
