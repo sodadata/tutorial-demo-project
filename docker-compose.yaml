@@ -19,7 +19,7 @@ services:
       dockerfile: ./Dockerfile_soda_sql
     volumes:
       - ./new_york_bus_breakdown:/new_york_bus_breakdown
-    tty: true
+    #tty: true
     ports:
       - 8001:5432
     links:
