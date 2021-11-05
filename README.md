@@ -39,7 +39,7 @@ The table lives in the `sodasql_tutorial` database in the `new_york` schema. You
 select * from sodasql_tutorial.new_york.breakdowns limit 50;
 ```
 
-Please note: in this demo setup, we do not have a password set for accessing the database. You should of course never use this approach for your own datasets. Read our (docs)[https://docs.soda.io/soda/warehouse_types.html] to learn more on how to configure credentials for the supported data sources.
+Please note: in this demo setup, we do not have a password set for accessing the database. You should of course never use this approach for your own datasets. Read our [docs](https://docs.soda.io/soda/warehouse_types.html) to learn more on how to configure credentials for the supported data sources.
 
 ### Run tests in the `soda-sql` docker container
 
