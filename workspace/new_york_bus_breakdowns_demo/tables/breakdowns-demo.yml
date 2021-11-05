@@ -26,3 +26,15 @@ columns:
     tests:
       - invalid_percentage == 0
       - missing_count == 0
+  school_year:
+    valid_format: date_inverse
+    tests:
+      - invalid_percentage == 0
+  bus_no:
+    valid_format: number_whole
+    tests:
+      - invalid_percentage <= 20
+  schools_serviced:
+    valid_format: number_whole
+    tests:
+      - invalid_percentage <= 15

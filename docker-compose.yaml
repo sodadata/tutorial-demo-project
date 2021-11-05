@@ -18,7 +18,8 @@ services:
       context: .
       dockerfile: ./Dockerfile_soda_sql
     volumes:
-      - ./new_york_bus_breakdown:/new_york_bus_breakdown
+      - ./workspace:/workspace
+      - ~/.soda/env_vars.yml:/root/.soda/env_vars.yml
     #tty: true
     ports:
       - 8001:5432
