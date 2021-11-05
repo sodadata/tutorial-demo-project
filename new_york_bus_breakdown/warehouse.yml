@@ -1,9 +1,0 @@
-name: sodasql
-connection:
-  type: postgres
-  host: soda_sql_tutorial_db
-  port: "5432"
-  username: sodasql
-  password: env_var(POSTGRES_PASSWORD)
-  database: sodasql_tutorial
-  schema: new_york
