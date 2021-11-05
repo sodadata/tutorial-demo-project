@@ -25,4 +25,4 @@ columns:
     valid_format: number_whole
     tests:
       - invalid_percentage == 0
-      - missing_count < 0
+      - missing_count == 0
