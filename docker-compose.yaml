@@ -20,7 +20,7 @@ services:
       dockerfile: ./Dockerfile_soda_sql
     container_name: soda_sql_project
     volumes:
-      - ./new_york_bus_breakdown:/new_york_bus_breakdown
+      - ./workspace:/workspace
     #tty: true
     ports:
       - 8001:5432

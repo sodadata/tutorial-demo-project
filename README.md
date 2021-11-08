@@ -12,7 +12,7 @@ You should have a recent version of docker and docker-compose that is able to ru
 
 Just run:
 
-@TODO: token needs to be removed once the project is public
+@TODO: token step needs to be removed once the project is public
 
 ```bash
 export GH_TOKEN=`get your token from checking the below URL in a browser, it will be added as a paramter in the URL`
@@ -85,7 +85,7 @@ select * from sodasql_tutorial.new_york.breakdowns limit 50;
 
 ## Modify your tests locally
 
-From the repository root, you can navigate into the `new_york_bus_breakdown` folder. This folder is your `soda-sql` project.
+From the repository root, you can navigate into the `workspace/new_york_bus_breakdown` folder. This folder is your `soda-sql` project.
 
 Feel free to make as many changes as you want to the `breakdowns.yml` file. Set up tests you would like to run on this table (see docs.soda.io).
 This project folder is kept in sync with the docker container you spun up in earlier steps.
