@@ -1,5 +1,11 @@
 FROM python:3.8-slim
 
+RUN echo '[ ! -z "$TERM" -a -r /etc/motd ] && cat /etc/motd' \
+    >> /etc/bash.bashrc
+
+COPY scripts/motd.txt /etc/motd
+COPY scripts/bashrc.txt /root/.bashrc
+
 RUN pip install --upgrade pip && pip install soda-sql-postgresql
 
 ENTRYPOINT ["/bin/bash", "-c"]

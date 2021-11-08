@@ -8,6 +8,29 @@ You should have a recent version of docker and docker-compose that is able to ru
 
 ## Installation
 
+### Using a convenience setup script
+
+Just run:
+
+@TODO: token step needs to be removed once the project is public
+
+```bash
+export GH_TOKEN=`get your token from checking the below URL in a browser, it will be added as a paramter in the URL`
+```
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/sodadata/tutorial-demo-project/feat/setup-script/scripts/setup.sh\?token=${GH_TOKEN})"
+```
+
+This will:
+
+- fetch the created package and unpack it
+- spin up the containers using Docker Compose
+- and put you in a shell in the container
+
+### Manual setup
+
+
 1. Clone this repository in a location of your choosing
 2. Once cloned, navigate into the project `cd tutorial-demo-project`
 3. Build/Start the containers with `docker-compose up -d` (the `-d` flag means "detached" which means that you won't need to keep the terminal running for the docker containers to stay alive.
@@ -38,8 +61,6 @@ The table lives in the `sodasql_tutorial` database in the `new_york` schema. You
 ```sql
 select * from sodasql_tutorial.new_york.breakdowns limit 50;
 ```
-
-Please note: in this demo setup, we do not have a password set for accessing the database. You should of course never use this approach for your own datasets. Read our [docs](https://docs.soda.io/soda/warehouse_types.html) to learn more on how to configure credentials for the supported data sources.
 
 ### Run tests in the `soda-sql` docker container
 
@@ -84,8 +105,7 @@ This will run the scan and print the collected metrics along with the results of
 You can use an example modified version of the file `tables/breakdowns.yml` as available in `tables/breakdowns-demo.yml` for demo purposes to run another, modified scan:
 
 ```bash
-cp tables/breakdowns-demo.yml tables/breakdowns.yml
-soda scan warehouse.yml tables/breakdowns.yml
+soda scan warehouse.yml tables/breakdowns-demo.yml
 ```
 
 This time it will end with 2 out of 6 tests failed.
