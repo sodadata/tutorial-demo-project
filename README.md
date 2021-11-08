@@ -16,7 +16,10 @@ Just run:
 
 ```bash
 export GH_TOKEN=`get your token from checking the below URL in a browser, it will be added as a paramter in the URL`
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/sodadata/tutorial-demo-project/feat/setup-script/scripts/setup.sh?token=$GH_TOKEN)"
+```
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/sodadata/tutorial-demo-project/feat/setup-script/scripts/setup.sh\?token=${GH_TOKEN})"
 ```
 
 This will:
