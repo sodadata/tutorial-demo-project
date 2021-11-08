@@ -21,6 +21,7 @@ services:
     container_name: soda_sql_project
     volumes:
       - ./workspace:/workspace
+      - ~/.soda/env_vars.yml:/root/.soda/env_vars.yml
     #tty: true
     ports:
       - 8001:5432
