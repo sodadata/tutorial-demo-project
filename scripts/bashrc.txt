@@ -1,0 +1,143 @@
+RED="\033[1;31m"
+GREEN="\033[0;32m"
+PURPLE="\033[0;35m"
+BLUE="\033[1;35m"
+ORANGE="\033[1;31m"
+NOCOLOR="\033[0m"
+
+function hint(){
+
+    HINTSTATE=$HINTSTATE
+    case $HINTSTATE in
+
+    1)
+        echo ""
+        echo "A PostgreSQL database is running and soda is configured to connect to it, just run:"
+        echo ""
+        echo "    soda analyze"
+        echo ""
+        echo -e "(you can type ${PURPLE}run${NOCOLOR} to execute the above command)"
+        echo ""
+
+        ((HINTSTATE=HINTSTATE+1))
+        export HINTSTATE
+        ;;
+
+    2)
+        echo ""
+        echo "The previous command created an example table config file for the"
+        echo "table 'breakdowns', you can inspect it using:"
+        echo ""
+        echo "    cat tables/breakdowns.yml"
+        echo ""
+        echo -e "(you can type ${PURPLE}run${NOCOLOR} to execute the above command)"
+        echo ""
+
+        ((HINTSTATE=HINTSTATE+1))
+        export HINTSTATE
+        ;;
+
+    3)
+        echo ""
+        echo "Now run the soda scan command aganst the database, using the config files:"
+        echo ""
+        echo "    soda scan warehouse.yml tables/breakdowns.yml"
+        echo ""
+        echo -e "(you can type ${PURPLE}run${NOCOLOR} to execute the above command)"
+        echo ""
+
+        ((HINTSTATE=HINTSTATE+1))
+        export HINTSTATE
+        ;;
+
+    4)
+        echo ""
+        echo "Now run another soda using a modified tables config file (file is provided), "
+        echo "just run this command and you will see some tests will be marked as failed:"
+        echo ""
+        echo "    soda scan warehouse.yml tables/breakdowns-demo.yml"
+        echo ""
+        echo -e "(you can type ${PURPLE}run${NOCOLOR} to execute the above command)"
+        echo ""
+
+        ((HINTSTATE=HINTSTATE+1))
+        export HINTSTATE
+        ;;
+
+    5)
+        echo ""
+        echo "Inspect the file to compare with the previous one:"
+        echo ""
+        echo "    cat tables/breakdowns-demo.yml"
+        echo ""
+        echo -e "(you can type ${PURPLE}run${NOCOLOR} to execute the above command)"
+        echo ""
+
+        ((HINTSTATE=HINTSTATE+1))
+        export HINTSTATE
+        ;;
+
+    *)
+        if [[ $HINTSTATE -gt 5 ]]
+        then
+            echo ""
+            echo -e "No more hints available, just check the docs for more inspiration: ${BLUE}https://docs.soda.io${NOCOLOR}"
+            echo ""
+            
+        else
+            echo ""
+            echo "You can run these commands to get started:"
+            echo ""
+            echo "    cd new_york_bus_breakdowns_demo"
+            echo "    soda"
+            echo ""
+            echo -e "(remember: you can run ${BLUE}hint${NOCOLOR} multiple times to get more tips and you can type ${PURPLE}run${NOCOLOR} each "
+            echo "time to run the corresponding command)"
+            echo ""
+
+            ((HINTSTATE=1))
+            export HINTSTATE
+        fi
+        ;;
+    esac
+}
+
+function run(){
+    HINTSTATE=$HINTSTATE
+    case $HINTSTATE in
+
+    1)
+        echo -e "${PURPLE}Running command: cd new_york_bus_breakdowns_demo${NOCOLOR}"
+        cd new_york_bus_breakdowns_demo
+
+        echo -e "${PURPLE}Running command: soda${NOCOLOR}"
+        soda
+        ;;
+
+    2)
+        echo -e "${PURPLE}Running command: soda analyze${NOCOLOR}"
+        soda analyze
+        ;;
+
+    3)
+        echo -e "${PURPLE}Running command: cat tables/breakdown.yml${NOCOLOR}"
+        cat tables/breakdowns.yml
+        ;;
+
+    4)
+        echo -e "${PURPLE}Running command: soda scan warehouse.yml tables/breakdowns.yml${NOCOLOR}"
+        soda scan warehouse.yml tables/breakdowns.yml
+        ;;
+
+    5)
+        echo -e "${PURPLE}Running command: soda scan warehouse.yml tables/breakdowns-demo.yml${NOCOLOR}"
+        soda scan warehouse.yml tables/breakdowns-demo.yml
+        ;;
+
+    6)
+        echo -e "${PURPLE}Running command: cat tables/breakdowns-demo.yml${NOCOLOR}"
+        cat tables/breakdowns-demo.yml
+        ;;
+
+    esac
+}

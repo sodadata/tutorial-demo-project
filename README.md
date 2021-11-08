@@ -8,6 +8,23 @@ You should have a recent version of docker and docker-compose that is able to ru
 
 ## Installation
 
+### Using a convenience setup script
+
+Just run:
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/sodadata/tutorial-demo-project/feat/setup-script/scripts/setup.sh)"
+```
+
+This will:
+
+- fetch the created package and unpack it
+- spin up the containers using Docker Compose
+- and put you in a shell in the container
+
+### Manual setup
+
+
 1. Clone this repository in a location of your choosing
 2. Once cloned, navigate into the project `cd tutorial-demo-project`
 3. Build/Start the containers with `docker-compose up -d` (the `-d` flag means "detached" which means that you won't need to keep the terminal running for the docker containers to stay alive.
@@ -25,7 +42,7 @@ d7950300de7a   postgres                                 "docker-entrypoint.s…"
 
 To make running your commands inside the docker container feel just like you'd be running them locally we've created a few shell bindings.
 
-To make them available to your current terminal session just type: `source shell_bindings.sh` and you'll be able to do `soda --help` or `soda scan` (in fact any of the soda commands) and they will be run in the docker container without added instructions to docker.
+To make them available to your current terminal session just type: `source scripts/shell_bindings.sh` and you'll be able to do `soda --help` or `soda scan` (in fact any of the soda commands) and they will be run in the docker container without added instructions to docker.
 
 If bindings aren't for you and you'd prefer to log into the container's bash and run your commands in there that's fine too. You can do the following:
 

@@ -3,6 +3,7 @@ version: "3.9"
 services:
   soda_sql_tutorial_db:
     image: postgres
+    container_name: soda_sql_tutorial_db
     environment:
       POSTGRES_USER: sodasql
       POSTGRES_DB: sodasql_tutorial
@@ -10,13 +11,14 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./scripts/init.sql:/docker-entrypoint-initdb.d/init.sql
       - ./data/:/data
 
   soda_sql_project:
     build:
       context: .
       dockerfile: ./Dockerfile_soda_sql
+    container_name: soda_sql_project
     volumes:
       - ./new_york_bus_breakdown:/new_york_bus_breakdown
     #tty: true
