@@ -65,8 +65,8 @@ then
   wait_for_user
 fi
 
-# fetch the gzip file and extract
-curl https://raw.githubusercontent.com/sodadata/tutorial-demo-project/feat/setup-scriptsoda-sql-docker-demo.tar.gz | tar -xz
+# fetch the gzip file and extract - @TODO, token needs to be removed once project is public
+curl "https://raw.githubusercontent.com/sodadata/tutorial-demo-project/feat/setup-scriptsoda-sql-docker-demo.tar.gz?token=$GH_TOKEN" | tar -xz
 
 
 # extract
