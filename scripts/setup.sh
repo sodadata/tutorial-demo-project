@@ -75,7 +75,7 @@ tar -zxf soda-sql-docker-demo.tar.gz
 rm soda-sql-docker-demo.tar.gz
 
 # run docker-compose
-docker-compose up -d 
+docker-compose up -d
 
 # run the shell
 docker-compose run --use-aliases --rm soda_sql_project  "cd /workspace && /bin/bash"

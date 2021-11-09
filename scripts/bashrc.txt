@@ -83,7 +83,7 @@ function hint(){
             echo ""
             echo -e "No more hints available, just check the docs for more inspiration: ${BLUE}https://docs.soda.io${NOCOLOR}"
             echo ""
-            
+
         else
             echo ""
             echo "You can run these commands to get started:"

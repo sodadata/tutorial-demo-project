@@ -6,5 +6,5 @@
 | Type "hint" if you don't know where to start                  |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
-Soda SQL, see https://docs.soda.io 
+Soda SQL, see https://docs.soda.io
 (c) Soda Data NV 2021
