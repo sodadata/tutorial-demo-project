@@ -68,10 +68,6 @@ fi
 # fetch the gzip file and extract
 curl "https://raw.githubusercontent.com/sodadata/tutorial-demo-project/main/soda-sql-docker-demo.tar.gz" | tar -xz
 
-# extract
-tar -zxf soda-sql-docker-demo.tar.gz
-rm soda-sql-docker-demo.tar.gz
-
 # run docker-compose
 docker-compose up -d
 
