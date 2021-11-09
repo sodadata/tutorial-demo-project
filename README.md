@@ -12,14 +12,8 @@ You should have a recent version of docker and docker-compose that is able to ru
 
 Just run:
 
-@TODO: token step needs to be removed once the project is public
-
 ```bash
-export GH_TOKEN=`get your token from checking the below URL in a browser, it will be added as a paramter in the URL`
-```
-
-```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/sodadata/tutorial-demo-project/feat/setup-script/scripts/setup.sh\?token=${GH_TOKEN})"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/sodadata/tutorial-demo-project/main/scripts/setup.sh)"
 ```
 
 This will:

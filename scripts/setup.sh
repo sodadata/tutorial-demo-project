@@ -65,10 +65,8 @@ then
   wait_for_user
 fi
 
-# fetch the gzip file and extract - @TODO, since project is still private, the next line should be uncommented once public
-# curl "https://raw.githubusercontent.com/sodadata/tutorial-demo-project/feat/setup-script/soda-sql-docker-demo.tar.gz" | tar -xz
-echo "For now you need to manually download from https://raw.githubusercontent.com/sodadata/tutorial-demo-project/feat/setup-script/soda-sql-docker-demo.tar.gz and then hit RETURN (warning message not relevant) again:"
-wait_for_user
+# fetch the gzip file and extract
+curl "https://raw.githubusercontent.com/sodadata/tutorial-demo-project/feat/setup-script/soda-sql-docker-demo.tar.gz" | tar -xz
 
 # extract
 tar -zxf soda-sql-docker-demo.tar.gz

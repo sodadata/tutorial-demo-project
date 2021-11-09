@@ -83,6 +83,8 @@ function hint(){
             echo ""
             echo -e "No more hints available, just check the docs for more inspiration: ${BLUE}https://docs.soda.io${NOCOLOR}"
             echo ""
+            echo -e "remember: you can type ${PURPLE}exit${NOCOLOR} to leave this shell and then ${PURPLE}docker-compose down${NOCOLOR} to halt the running containers."
+            echo ""
 
         else
             echo ""
