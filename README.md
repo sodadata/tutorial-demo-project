@@ -1,6 +1,6 @@
 # Soda SQL Demo Containers
 
-This repo provides an easy way to set up a `postgresql` database with demo data from the NYC Bus Breakdowns and Delay Dataset (also used in the interactve demo tutorial) along with a pre-configure `soda-sql` project and environment to facilitate quick start with minimal investment from users.
+This repo provides an easy way to set up a `postgresql` database with demo data (with a minor changes) from the [NYC Bus Breakdowns and Delay Dataset](https://data.cityofnewyork.us/Transportation/Bus-Breakdown-and-Delays/ez4e-fazm) (also used in the interactve demo tutorial) along with a pre-configure `soda-sql` project and environment to facilitate quick start with minimal investment from users.
 
 ## Pre-Requisites
 
@@ -29,7 +29,6 @@ This will:
 - and put you in a shell in the container
 
 ### Manual setup
-
 
 1. Clone this repository in a location of your choosing
 2. Once cloned, navigate into the project `cd tutorial-demo-project`
@@ -110,7 +109,7 @@ soda scan warehouse.yml tables/breakdowns-demo.yml
 
 This time it will end with 2 out of 6 tests failed.
 
-If you want to exit the Docker container's shell, just type `exit` and hit return. 
+If you want to exit the Docker container's shell, just type `exit` and hit return.
 
 ### Modify your tests locally
 
