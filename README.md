@@ -119,7 +119,3 @@ When you're done feel free to shut down your containers using:
 ```bash
 docker-compose down
 ```
-
-### Utilities
-
-You can optionally use some example shell functions available in `shell_bindings.sh` and source that file for your convenience.
