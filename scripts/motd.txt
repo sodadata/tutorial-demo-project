@@ -1,6 +1,6 @@
 
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-| Welcome to the Docker based shell for testing Soda SQL        |
+| Welcome to the Docker-based shell for testing Soda SQL        |
 | To exit, just type CTRL-D or type "exit" and hit return       |
 |                                                               |
 | Type "hint" if you don't know where to start                  |

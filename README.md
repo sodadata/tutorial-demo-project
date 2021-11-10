@@ -1,45 +1,72 @@
-# Soda SQL Demo Containers
+# Soda SQL Demo
 
-This repo provides an easy way to set up a `postgresql` database with demo data (with a minor changes) from the [NYC Bus Breakdowns and Delay Dataset](https://data.cityofnewyork.us/Transportation/Bus-Breakdown-and-Delays/ez4e-fazm) (also used in the interactve demo tutorial) along with a pre-configure `soda-sql` project and environment to facilitate quick start with minimal investment from users.
+This repo provides an easy way to set up a PostgreSQL database with data from the <a href+"https://data.cityofnewyork.us/Transportation/Bus-Breakdown-and-Delays/ez4e-fazm" target="_blank">NYC Bus Breakdowns and Delay Dataset</a> and a pre-configured Soda SQL project. You can use this repo as a test environment in which to experiment with Soda SQL. The Soda SQL interactive demo also references this project.
 
 ## Pre-Requisites
 
-You should have a recent version of docker and docker-compose that is able to run `docker-compose` files version "3.9" and up.
+* a recent version of [Docker](https://docs.docker.com/get-docker/) 
+* [Docker Compose](https://docs.docker.com/compose/install/) that is able to run `docker-compose` files version 3.9 and later
 
-## Installation
+## Set up using a script
 
-### Using a convenience setup script
-
-Just run:
+From the command-line, run the following command:
 
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/sodadata/tutorial-demo-project/main/scripts/setup.sh)"
 ```
 
-This will:
+The command completes the following tasks:
 
-- fetch the created package and unpack it
-- spin up the containers using Docker Compose
-- and put you in a shell in the container
+* fetches and unpacks the demo in the local directory
+* spins up the Docker containers using Docker Compose
+* drops you into a shell in the container, ready to begin using Soda SQL.
 
-### Manual setup
+```bash
 
-1. Clone this repository in a location of your choosing
-2. Once cloned, navigate into the project `cd tutorial-demo-project`
-3. Build/Start the containers with `docker-compose up -d` (the `-d` flag means "detached" which means that you won't need to keep the terminal running for the docker containers to stay alive.
-4. You can validate that the setup worked by running `docker ps -a | grep soda` command which should output something like below:
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+| Welcome to the Docker-based shell for testing Soda SQL        |
+| To exit, just type CTRL-D or type "exit" and hit return       |
+|                                                               |
+| Type "hint" if you don't know where to start                  |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+Soda SQL, see https://docs.soda.io
+(c) Soda Data NV 2021
+root@462fc591d108:/workspace# 
+```
+
+#### Troubleshoot
+**Problem:** When running the script on a Mac, you get an error such as `failed to solve with frontend dockerfile.v0: failed to read dockerfile: error from sender: open /Users/<user>/.Trash: operation not permitted`.
+**Solution:** You need to grant Full Disk Access to the Terminal application. Go to System Preferences > Security & Privacy > Privacy, then select Full Disk Access. Check the box next to Terminal to grant full disk access.
+
+## Set up manually
+
+1. Clone this repository to your local environment.
+2. In the command-line, navigate into the tutorial project: `cd tutorial-demo-project`.
+3. Build the Docker containers: `docker-compose up -d` (the `-d` flag means "detached" which means that you do not need to keep the terminal running for the docker containers to continue to run.)
+4. Validate that the setup is complete: `docker ps -a | grep soda`  This command yields output like the following:
 
 ```
 CONTAINER ID   IMAGE                                    COMMAND                  CREATED       STATUS         PORTS                                       NAMES
 90b555b29ccd   tutorial-demo-project_soda_sql_project   "/bin/bash"              3 hours ago   Exited (2) 3 seconds ago   0.0.0.0:8001->5432/tcp, :::8001->5432/tcp   tutorial-demo-project_soda_sql_project_1
 d7950300de7a   postgres                                 "docker-entrypoint.s…"   3 hours ago   Up 3 seconds   0.0.0.0:5432->5432/tcp, :::5432->5432/tcp   tutorial-demo-project_soda_sql_tutorial_db_1
 ```
+5. To run Soda commands and test your dataset, you need to get into the container's shell. From the project's root dir where the `docker-compose.yml` files exists, run the following command:
 
-## Usage
+```bash
+docker-compose run --rm soda_sql_project "cd /workspace && /bin/bash"
+```
+This command drops you into the container's shell with a prompt like the following:
 
-### Visualise or query the data
+```bash
+root@90461262c35e:/workspace# 
+```
+
+
+## (Optional) Examine or query the dataset
 
 Once the docker container is up, you can use any database clients such as DBeaver or DataGrip to connect to the database and query the `new_york.breakdowns` dataset.
+
 To set up a connection in those clients use the following parameters:
 
 ```
@@ -49,37 +76,27 @@ password: <leave empty>
 port: 5432
 ```
 
-The table lives in the `sodasql_tutorial` database in the `new_york` schema. You can select it like so
+The table exists in the `sodasql_tutorial` database in the `new_york` schema. You can select it using the following query:
 
 ```sql
 select * from sodasql_tutorial.new_york.breakdowns limit 50;
 ```
 
-### Run tests in the `soda-sql` docker container
+## Run Soda commands in the Soda SQL Docker container
 
-To run `soda scan` and test your dataset, you need to get into the provided container's shell. Just issue this command (from the project root dir where the file `docker-compose.yml` lives):
+Access <a href="https://docs.soda.io/soda-sql/configure.html" target="_blank">docs.soda.io</a> for full instructions on how to set up and use Soda SQL.
 
-```bash
-docker-compose run --rm soda_sql_project "cd /workspace && /bin/bash"
-```
+* Try running `soda` to see a list of Soda commands.
+* Try running `soda create postgres` to create a new Soda SQL project.
+* To enable you to run `soda analyze` and `soda scan` without configuring anything yourself, you can navigate to the `new_york_bus_breakdowns_demo` directory to use a sample `warehouse.yml` and sample `breakdowns-demo.yml` file. In the `new_york_bus_breakdowns_demo` directory, try running:
+    * `soda analyze`
+    * `soda scan warehouse.yml tables/breakdowns-demo.yml` 
 
-This will allow you to access the docker container's shell where you can now run the `soda analyze` command:
-
-```bash
-cd new_york_bus_breakdown_demo
-
-soda analyze
-```
-
-As a result, the file `tables/breakdowns.yml` will be created. Now you can run a scan:
-
-```bash
-soda scan warehouse.yml tables/breakdowns.yml
-```
-
-This will run the scan and print the collected metrics along with the results of the tests that are set up. If you have not added or deleted any of the tests we added for you the bottom of the `scan` output should look something like this:
+The output from the scan command yields something like this:
 
 ```
+  | 2.1.0b18
+  | Scanning tables/breakdowns-demo.yml ...
 ...
   | Derived measurement: invalid_count(school_age_or_prek) = 0
   | Derived measurement: valid_percentage(school_age_or_prek) = 100.0
@@ -87,35 +104,28 @@ This will run the scan and print the collected metrics along with the results of
   | Test column(school_year) test(invalid_percentage == 0) passed with measurements {"expression_result": 0.0, "invalid_percentage": 0.0}
   | Test column(bus_no) test(invalid_percentage <= 20) passed with measurements {"expression_result": 19.99919999199992, "invalid_percentage": 19.99919999199992}
   | Test column(schools_serviced) test(invalid_percentage <= 15) passed with measurements {"expression_result": 12.095620956209562, "invalid_percentage": 12.095620956209562}
-  | Executed 2 queries in 0:00:01.445494
+  | Test column(incident_number) test(invalid_percentage == 0) failed with measurements {"expression_result": 0.4785047850478505, "invalid_percentage": 0.4785047850478505}
+  | Test column(incident_number) test(missing_count == 0) failed with measurements {"expression_result": 192614, "missing_count": 192614}
+  | Executed 2 queries in 0:00:02.360158
   | Scan summary ------
-  | 239 measurements computed
-  | 4 tests executed
-  | All is good. No tests failed.
-  | Exiting with code 0
+  | 245 measurements computed
+  | 6 tests executed
+  | 2 of 6 tests failed:
+  |   Test column(incident_number) test(invalid_percentage == 0) failed with measurements {"expression_result": 0.4785047850478505, "invalid_percentage": 0.4785047850478505}
+  |   Test column(incident_number) test(missing_count == 0) failed with measurements {"expression_result": 192614, "missing_count": 192614}
+  | Exiting with code 1
 ```
 
-You can use an example modified version of the file `tables/breakdowns.yml` as available in `tables/breakdowns-demo.yml` for demo purposes to run another, modified scan:
 
-```bash
-soda scan warehouse.yml tables/breakdowns-demo.yml
-```
+### Modify the tests 
 
-This time it will end with 2 out of 6 tests failed.
+In the `new_york_bus_breakdowns_demo` directory, you can use a command-line text editor to open the `breakdowns-demo.yml` and adjust the existing tests or add new ones to the YAML file. Save the file, then run `soda scan warehouse.yml tables/breakdowns-demo.yml` again to see the results of your new or modified tests.
 
-If you want to exit the Docker container's shell, just type `exit` and hit return.
+Learn how to define tests in the YAML file at <a href="docs.soda.io/soda-sql/tests.html" target="_blank"> docs.soda.io</a>.
 
-### Modify your tests locally
+## Exit
 
-From the repository root, you can navigate into the `workspace/new_york_bus_breakdown_demo` folder. This folder is your `soda-sql` project.
+When you're done with the test environment, you can stop the Docker container.
 
-Feel free to make as many changes as you want to the `breakdowns.yml` file. Set up tests you would like to run on this table (see docs.soda.io).
-This project folder is kept in sync since it wil be mounted by the docker container that you can use to issue the `soda` commands in the next step.
-
-### Tear Down
-
-When you're done feel free to shut down your containers using:
-
-```bash
-docker-compose down
-```
+* If you set up the container using the script, use `ctrl+d` to shut down your container, or type `exit`.
+* If you set up the container manually, type `exit` or use `docker-compose down`.
