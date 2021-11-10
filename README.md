@@ -1,6 +1,6 @@
 # Soda SQL Demo
 
-This repo provides an easy way to set up a PostgreSQL database with data from the <a href+"https://data.cityofnewyork.us/Transportation/Bus-Breakdown-and-Delays/ez4e-fazm" target="_blank">NYC Bus Breakdowns and Delay Dataset</a> and a pre-configured Soda SQL project. You can use this repo as a test environment in which to experiment with Soda SQL. The Soda SQL interactive demo also references this project.
+This repo provides an easy way to set up a PostgreSQL database with data from the <a href="https://data.cityofnewyork.us/Transportation/Bus-Breakdown-and-Delays/ez4e-fazm" target="_blank">NYC Bus Breakdowns and Delay Dataset</a> and a pre-configured Soda SQL project. You can use this repo as a test environment in which to experiment with Soda SQL. The Soda SQL interactive demo also references this project.
 
 ## Pre-Requisites
 
@@ -37,6 +37,7 @@ root@462fc591d108:/workspace#
 
 #### Troubleshoot
 **Problem:** When running the script on a Mac, you get an error such as `failed to solve with frontend dockerfile.v0: failed to read dockerfile: error from sender: open /Users/<user>/.Trash: operation not permitted`.
+
 **Solution:** You need to grant Full Disk Access to the Terminal application. Go to System Preferences > Security & Privacy > Privacy, then select Full Disk Access. Check the box next to Terminal to grant full disk access.
 
 ## Set up manually
@@ -121,7 +122,7 @@ The output from the scan command yields something like this:
 
 In the `new_york_bus_breakdowns_demo` directory, you can use a command-line text editor to open the `breakdowns-demo.yml` and adjust the existing tests or add new ones to the YAML file. Save the file, then run `soda scan warehouse.yml tables/breakdowns-demo.yml` again to see the results of your new or modified tests.
 
-Learn how to define tests in the YAML file at <a href="docs.soda.io/soda-sql/tests.html" target="_blank"> docs.soda.io</a>.
+Learn how to define tests in the YAML file at <a href="https://docs.soda.io/soda-sql/tests.html" target="_blank">docs.soda.io</a>.
 
 ## Exit
 
