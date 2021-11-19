@@ -52,7 +52,7 @@ CONTAINER ID   IMAGE                                    COMMAND                 
 90b555b29ccd   tutorial-demo-project_soda_sql_project   "/bin/bash"              3 hours ago   Exited (2) 3 seconds ago   0.0.0.0:8001->5432/tcp, :::8001->5432/tcp   tutorial-demo-project_soda_sql_project_1
 d7950300de7a   postgres                                 "docker-entrypoint.s…"   3 hours ago   Up 3 seconds   0.0.0.0:5432->5432/tcp, :::5432->5432/tcp   tutorial-demo-project_soda_sql_tutorial_db_1
 ```
-5. To run Soda commands and test your dataset, you need to get into the container's shell. From the project's root dir where the `docker-compose.yml` files exists, run the following command:
+5. To run Soda commands and test your dataset, you need to get into the container's shell. From the project's root dir where the `docker-compose.yml` file exists, run the following command:
 
 ```bash
 docker-compose run --rm soda_sql_project "cd /workspace && /bin/bash"
