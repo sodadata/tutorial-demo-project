@@ -2,7 +2,7 @@
 
 This repo provides an easy way to set up a PostgreSQL database with data from the <a href="https://data.cityofnewyork.us/Transportation/Bus-Breakdown-and-Delays/ez4e-fazm" target="_blank">NYC Bus Breakdowns and Delay Dataset</a> and a pre-configured Soda SQL project. You can use this repo as a test environment in which to experiment with Soda SQL. The Soda SQL interactive demo also references this project.
 
-## Pre-Requisites
+## Prerequisites
 
 * a recent version of [Docker](https://docs.docker.com/get-docker/) 
 * [Docker Compose](https://docs.docker.com/compose/install/) that is able to run `docker-compose` files version 3.9 and later
