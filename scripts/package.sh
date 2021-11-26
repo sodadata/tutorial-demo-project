@@ -8,5 +8,5 @@ cd $SCRIPTS_DIR/../
 
 tar zcvf soda-sql-docker-demo.tar.gz data workspace docker-compose.yaml \
     scripts/init.sql scripts/bashrc.txt scripts/motd.txt \
-    scripts/env_vars.yml shell_bindings.sh \
+    scripts/env_vars.yml \
     Dockerfile_soda_sql README.md
