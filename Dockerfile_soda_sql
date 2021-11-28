@@ -8,4 +8,6 @@ COPY scripts/bashrc.txt /root/.bashrc
 
 RUN pip install --upgrade pip && pip install soda-sql-postgresql
 
+RUN apt-get -y update && apt-get install -y vim nano
+
 ENTRYPOINT ["/bin/bash", "-c"]
